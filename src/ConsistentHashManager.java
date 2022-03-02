@@ -4,11 +4,18 @@
  */
 public class ConsistentHashManager {
 
-    public ConsistentHashManager() {
+    private static final int DEFAULT_VIR_NODE_COUNT = 150;
+    public int virNodeCount;
 
+    public ConsistentHashManager() {
+        this.virNodeCount = DEFAULT_VIR_NODE_COUNT;
     }
 
-    public void addNode() {
+    public ConsistentHashManager(int virNodeCount) {
+        this.virNodeCount = virNodeCount;
+    }
+
+    public void addNode(Node node) {
 
     }
 

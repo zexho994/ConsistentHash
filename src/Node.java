@@ -6,7 +6,13 @@ public class Node {
 
     private String name;
     private String host;
-    private String port;
+    private int port;
+
+    public Node(String name, String host, int port) {
+        this.name = name;
+        this.host = host;
+        this.port = port;
+    }
 
     public String getName() {
         return name;
@@ -24,11 +30,11 @@ public class Node {
         this.host = host;
     }
 
-    public String getPort() {
+    public int getPort() {
         return port;
     }
 
-    public void setPort(String port) {
+    public void setPort(int port) {
         this.port = port;
     }
 }
