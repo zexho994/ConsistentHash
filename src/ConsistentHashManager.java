@@ -32,9 +32,12 @@ public class ConsistentHashManager {
 
     }
 
-    public Node getNextNote(int hash) {
-
-        return null;
+    public Node getNextNote(String key) {
+        SortedMap<Long, Node> longNodeSortedMap = ring.tailMap(hashUtil.hash(key));
+        if (longNodeSortedMap.isEmpty()) {
+            return ring.get(ring.firstKey());
+        }
+        return longNodeSortedMap.get(longNodeSortedMap.firstKey());
     }
 
     public int nodeCount() {
