@@ -4,6 +4,6 @@
  */
 public interface HashUtil {
 
-    long hash(String key);
+    int hash(String key);
 
 }

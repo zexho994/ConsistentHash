@@ -19,13 +19,13 @@ public class Md5HashUtil implements HashUtil {
     }
 
     @Override
-    public long hash(String key) {
+    public int hash(String key) {
         this.messageDigest.update(String.valueOf(key).getBytes(StandardCharsets.UTF_8));
         byte[] digest = this.messageDigest.digest();
-        long h = 0;
+        int h = 0;
         for (int i = 0; i < 4; i++) {
-            h <<= 8;
             h |= ((int) digest[i]) & 0xFF;
+            h <<= 8;
         }
         return h;
     }

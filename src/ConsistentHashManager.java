@@ -9,7 +9,10 @@ public class ConsistentHashManager {
 
     private static final int DEFAULT_VIR_NODE_COUNT = 30;
     private final int virNodeCount;
-    private final SortedMap<Long, Node> ring = new TreeMap();
+    /**
+     * hash环，根据整型存储节点以及虚拟节点
+     */
+    private final SortedMap<Integer, Node> ring = new TreeMap();
     private final HashUtil hashUtil = new Md5HashUtil();
 
 
@@ -33,7 +36,7 @@ public class ConsistentHashManager {
     }
 
     public Node getNextNode(String key) {
-        SortedMap<Long, Node> longNodeSortedMap = ring.tailMap(hashUtil.hash(key));
+        SortedMap<Integer, Node> longNodeSortedMap = ring.tailMap(hashUtil.hash(key));
         if (longNodeSortedMap.isEmpty()) {
             return ring.get(ring.firstKey());
         }
