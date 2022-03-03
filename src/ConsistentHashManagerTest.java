@@ -31,7 +31,7 @@ class ConsistentHashManagerTest {
         map.put("node2", 0);
         map.put("node3", 0);
         map.put("node4", 0);
-        for (int i = 0; i < 20000; i++) {
+        for (int i = 0; i < 200000; i++) {
             Node nextNote = consistentHashManager.getNextNode(preKey + i);
             map.computeIfPresent(nextNote.getName(), (k, v) -> v + 1);
         }
@@ -49,9 +49,9 @@ class ConsistentHashManagerTest {
         consistentHashManager.addNode(node4);
 
         String preKey = "Data_";
-        Map<Integer, String> map = new HashMap<>(20000);
+        Map<Integer, String> map = new HashMap<>(200000);
 
-        for (int i = 0; i < 20000; i++) {
+        for (int i = 0; i < 200000; i++) {
             Node nextNode = consistentHashManager.getNextNode(preKey + i);
             map.put(i, nextNode.getName());
         }
@@ -68,7 +68,7 @@ class ConsistentHashManagerTest {
         AtomicInteger n1 = new AtomicInteger(0);
         AtomicInteger n2 = new AtomicInteger(0);
         AtomicInteger n3 = new AtomicInteger(0);
-        for (int i = 0; i < 20000; i++) {
+        for (int i = 0; i < 200000; i++) {
             Node nextNode = consistentHashManager.getNextNode(preKey + i);
             if (nextNode.getName().equals("node1")) {
                 n1.incrementAndGet();

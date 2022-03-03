@@ -25,9 +25,9 @@ public class ConsistentHashManager {
     }
 
     public void addNode(Node node) {
-        ring.put(hashUtil.hash(node.getKey()), node);
+        ring.put(hashUtil.hash(String.valueOf(node.hashCode())), node);
         for (int i = 0; i < this.virNodeCount; i++) {
-            this.ring.put(hashUtil.hash(node.getKey() + i), node);
+            this.ring.put(hashUtil.hash(String.valueOf(i + node.hashCode())), node);
         }
     }
 

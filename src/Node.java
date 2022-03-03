@@ -41,10 +41,6 @@ public class Node {
         this.port = port;
     }
 
-    public String getKey() {
-        return this.name + this.host + this.port;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
