@@ -28,11 +28,11 @@ public class ConsistentHashManager {
         }
     }
 
-    public void removeNote() {
-
+    public void removeNote(Node node) {
+        ring.entrySet().removeIf(next -> next.getValue().equals(node));
     }
 
-    public Node getNextNote(String key) {
+    public Node getNextNode(String key) {
         SortedMap<Long, Node> longNodeSortedMap = ring.tailMap(hashUtil.hash(key));
         if (longNodeSortedMap.isEmpty()) {
             return ring.get(ring.firstKey());
